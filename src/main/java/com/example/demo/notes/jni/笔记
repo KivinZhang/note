@@ -1,0 +1,23 @@
+
+最近在做java调用c++相关的东西,因为模型文件格式解析是c++写的.考虑到想发布成服务,还有统一的内存管理,还有自己弱鸡的c++水平,就用jni来实现了.
+实现jni的步骤
+1. 开发环境.java文件中定义本地方法实现
+2. 生成相应的.class文件
+3. 对应class路径下 javah -jni com.epc.vsp.vsprepository.jni.FbxParse 生成相应的 .h头文件
+4. 在vs中新建一个c++项目,引入.h头文件,并实现相应的方法
+5. 将写好的代码生成.dll文件,并放到java虚拟机能够加载到的目录下.
+        这个目录可以通过  System.property("getProperty("java.library.path")");获取,如果dll文件不在相应目录的话,会抛异常
+        Exception in thread "main" java.lang.UnsatisfiedLinkError: no HelloWorld2 in java.library.path
+            at java.lang.ClassLoader.loadLibrary(ClassLoader.java:1860)
+            at java.lang.Runtime.loadLibrary0(Runtime.java:845)
+            at java.lang.System.loadLibrary(System.java:1084)
+            at com.study.jnilearn.HelloWorld.<clinit>(HelloWorld.java:13)
+        这个小坑也比较好解决
+
+6.在java代码中引入该dll文件,比较简单的就是静态代码块
+         System.loadLibrary("web3d");
+
+
+7.执行相应的 native方法就行了.
+
+需要注意的地方 1.java类型和 c++类型的转换  2.c++中内存的管理
