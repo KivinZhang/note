@@ -1,0 +1,12 @@
+##mongodb日常查询语句
+环境:
+  mogodbVersion: v3.0.4
+  可视化工具: Robomongo 0.9.0
+
+查询并更新某些字段:
+  备注: 这里的更新是删除某些列, 如果不添加{multi:true} 则只会更新一条数据
+  sql: db.getCollection('pieceState').update({"modelid":"5b6941dbc252e2130cfdeecc"},{$unset:{"finishDate":"","startDate":""}},{multi:true})
+
+查询某些不为空的字段:
+
+删除所有表数据:
