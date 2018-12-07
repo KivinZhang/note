@@ -3,7 +3,7 @@
 实现jni的步骤
 1. 开发环境.java文件中定义本地方法实现
 2. 生成相应的.class文件
-3. 对应class路径下 javah -jni com.epc.vsp.vsprepository.jni.FbxParse 生成相应的 .h头文件
+3. 对应class路径下 javah -jni com.epc.vsp.vsprepository.jni.FbxParseCopy1 生成相应的 .h头文件
 4. 在vs中新建一个c++项目,引入.h头文件,并实现相应的方法
 5. 将写好的代码生成.dll文件,并放到java虚拟机能够加载到的目录下.
         这个目录可以通过  System.property("getProperty("java.library.path")");获取,如果dll文件不在相应目录的话,会抛异常
@@ -21,3 +21,5 @@
 7.执行相应的 native方法就行了.
 
 需要注意的地方 1.java类型和 c++类型的转换  2.c++中内存的管理
+
+事实证明,现在的项目不适合使用jni,因为数据量过大,太吃内存,先暂停用

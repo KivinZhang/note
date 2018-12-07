@@ -1,0 +1,12 @@
+最近遇到了需要定时更新mongodb数据问题:
+collection Model的主键为ObjectID,这里有三个坑
+1.导入时首先需要在脚本js里声明 _id,这个id为 之前通过mongoInput获取的id
+//Script here
+ var _id = '{ "$oid": "' + id + '" }'
+2.需要OutPut中勾选 update,和 modify_update
+如果只勾选update,则默认更新此条数据的所有
+3.需要在Json设置-Y
+根据ID查询数据也是同理,
+坑啊啊,以前搞定过一次,后来用自己定义的uuid做主键了就忘了原来怎么搞的了,这次切记
+还有,还是stackoverflow靠谱
+
