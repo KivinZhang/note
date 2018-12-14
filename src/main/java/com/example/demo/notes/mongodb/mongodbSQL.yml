@@ -10,3 +10,6 @@
 查询某些不为空的字段:
 
 删除所有表数据:
+
+
+模糊查询: db.getCollection('pieceState').find({"component" :{$regex:'5309',$options:'i'},"projectid" : "5ac2deace3175f2e5026cc1a","type" : "PreFabrication"})
