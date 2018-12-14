@@ -1,10 +1,6 @@
 package com.example.demo.notes.test;
 
-import com.sun.deploy.util.ArrayUtil;
-
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by zhangkai on 2018/9/19.
